@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinalprojectdbModelStoreContainer" CdmEntityContainer="FinalprojectdbEntities1">
+    <EntitySetMapping Name="T_ErrorLogs">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_ErrorLogs">
+        <MappingFragment StoreEntitySet="T_ErrorLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="ErrorOn" ColumnName="ErrorOn" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OTP_Details">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_OTP_Details">
+        <MappingFragment StoreEntitySet="T_OTP_Details">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="GeneratedOn" ColumnName="GeneratedOn" />
+          <ScalarProperty Name="ValidTill" ColumnName="ValidTill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PasswordHistoryLog">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_PasswordHistoryLog">
+        <MappingFragment StoreEntitySet="T_PasswordHistoryLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ChangedOn" ColumnName="ChangedOn" />
+          <ScalarProperty Name="OldPassword" ColumnName="OldPassword" />
+          <ScalarProperty Name="NewPassword" ColumnName="NewPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Roles">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Roles">
+        <MappingFragment StoreEntitySet="T_Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Users">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Users">
+        <MappingFragment StoreEntitySet="T_Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_AddRole" FunctionName="FinalprojectdbModel.Store.proc_AddRole" />
+    <FunctionImportMapping FunctionImportName="proc_ModifyRole" FunctionName="FinalprojectdbModel.Store.proc_ModifyRole" />
+    <FunctionImportMapping FunctionImportName="proc_RemoveRole" FunctionName="FinalprojectdbModel.Store.proc_RemoveRole" />
+    <EntitySetMapping Name="T_Feedback">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Feedback">
+        <MappingFragment StoreEntitySet="T_Feedback">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="UserId_" ColumnName="UserId " />
+          <ScalarProperty Name="FId" ColumnName="FId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Question">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Question">
+        <MappingFragment StoreEntitySet="T_Question">
+          <ScalarProperty Name="CorrectAns" ColumnName="CorrectAns" />
+          <ScalarProperty Name="Opt4" ColumnName="Opt4" />
+          <ScalarProperty Name="Opt3" ColumnName="Opt3" />
+          <ScalarProperty Name="Opt2" ColumnName="Opt2" />
+          <ScalarProperty Name="Opt1" ColumnName="Opt1" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="SubId" ColumnName="SubId" />
+          <ScalarProperty Name="QueId" ColumnName="QueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Result">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Result">
+        <MappingFragment StoreEntitySet="T_Result">
+          <ScalarProperty Name="CntCorrectAns" ColumnName="CntCorrectAns" />
+          <ScalarProperty Name="SubId" ColumnName="SubId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ResId" ColumnName="ResId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Sample_Paper">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Sample_Paper">
+        <MappingFragment StoreEntitySet="T_Sample_Paper">
+          <ScalarProperty Name="Pdf" ColumnName="Pdf" />
+          <ScalarProperty Name="SubId" ColumnName="SubId" />
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Subject">
+      <EntityTypeMapping TypeName="FinalprojectdbModel.T_Subject">
+        <MappingFragment StoreEntitySet="T_Subject">
+          <ScalarProperty Name="SubName" ColumnName="SubName" />
+          <ScalarProperty Name="SubId" ColumnName="SubId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

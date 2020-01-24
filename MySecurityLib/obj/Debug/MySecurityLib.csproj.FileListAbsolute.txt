@@ -1,0 +1,5 @@
+D:\project\FinalProject\MySecurityLib\bin\Debug\MySecurityLib.dll
+D:\project\FinalProject\MySecurityLib\bin\Debug\MySecurityLib.pdb
+D:\project\FinalProject\MySecurityLib\obj\Debug\MySecurityLib.csprojResolveAssemblyReference.cache
+D:\project\FinalProject\MySecurityLib\obj\Debug\MySecurityLib.dll
+D:\project\FinalProject\MySecurityLib\obj\Debug\MySecurityLib.pdb

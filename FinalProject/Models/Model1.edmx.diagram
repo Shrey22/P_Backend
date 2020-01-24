@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8815a9979384418baf48443c40603fb5" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_ErrorLogs" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Feedback" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_OTP_Details" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_PasswordHistoryLog" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Question" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Result" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Roles" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Sample_Paper" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Subject" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalprojectdbModel.T_Users" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_Feedback_T_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_OTP_Details_ToT_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_PasswordHistoryLog_ToT_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_T_Question_ToT_SUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_T_Result_ToT_SUBJECT" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_T_Result_ToT_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_Users_T_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="FinalprojectdbModel.FK_T_T_Sample_Paper_ToT_SUBJECT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,10 @@
+D:\project\FinalProject\MyLoggerLib\bin\Debug\MyLoggerLib.dll
+D:\project\FinalProject\MyLoggerLib\bin\Debug\MyLoggerLib.pdb
+D:\project\FinalProject\MyLoggerLib\obj\Debug\MyLoggerLib.csprojResolveAssemblyReference.cache
+D:\project\FinalProject\MyLoggerLib\obj\Debug\MyLoggerLib.dll
+D:\project\FinalProject\MyLoggerLib\obj\Debug\MyLoggerLib.pdb
+D:\project\P_Backend\Backup1\MyLoggerLib\bin\Debug\MyLoggerLib.dll
+D:\project\P_Backend\Backup1\MyLoggerLib\bin\Debug\MyLoggerLib.pdb
+D:\project\P_Backend\Backup1\MyLoggerLib\obj\Debug\MyLoggerLib.dll
+D:\project\P_Backend\Backup1\MyLoggerLib\obj\Debug\MyLoggerLib.pdb
+D:\project\P_Backend\Backup1\MyLoggerLib\obj\Debug\MyLoggerLib.csprojResolveAssemblyReference.cache
