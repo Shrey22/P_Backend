@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using FinalProject.Models;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace FinalProject.Controllers
 {
@@ -187,6 +189,17 @@ namespace FinalProject.Controllers
                 logger.Log("Exception occured returned Error msg");
                 return response;
             }
+        }
+
+        [HttpGet]
+        [Route("api/Subject/pdf")]
+        public HttpResponseMessage RetrieveFile()
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            FileStream fileStream = File.OpenRead(@"D:\ASDM\MEAN.pdf");
+            response.Content = new StreamContent(fileStream);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+            return response;
         }
     }
 }

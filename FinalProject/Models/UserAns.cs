@@ -7,11 +7,8 @@ namespace FinalProject.Models
 {
     public class UserAns
     {
-        public string ans1 { get; set; }
-        public string ans2 { get; set; }
-        public string ans3 { get; set; }
-        public string ans4 { get; set; }
-
+        public int QueId { get; set; }
+        public string value { get; set; }
         
     }
 }

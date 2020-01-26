@@ -138,44 +138,40 @@ namespace FinalProject.Controllers
             }
         }
 
-        // POST: api/Question
-        
-        public Response Post([FromBody] UserAns que)
+        // POST: api/Question 
+        [HttpPut]
+        [System.Web.Http.Route("api/Question/Subid/{id}")]
+        public Response put(int subid,[FromBody] List<UserAns> que,int id)
         {
+
             try
             {
+                int marks = 0;
+
 
                 List<T_Question> questions = dalobj.T_Question.ToList();
 
-                //var correctans = (from q in questions
-                //                  where q.QueId == que && q.CorrectAns == que.CorrectAns
-                //                  select q);
+                foreach (var q in que)
+                {
+                    foreach (var aq in questions)
+                    {
+                        if (q.QueId == aq.QueId)
+                        {
+                            if (q.value == aq.CorrectAns)
+                            {
+                                marks++;
+                            }
+                        }
 
+                    }
+                }
+
+                response.Data = marks;
+                response.Status = "success";
+                response.Err = null;
+                logger.Log("marks displayed");
                 return response;
 
-
-
-
-                //if (que != null)
-                //{
-                //    dalobj.T_Question.Add(que);
-                //    dalobj.SaveChanges();
-
-                //    response.Data = null;
-                //    response.Status = "success";
-                //    response.Err = null;
-                //    logger.Log("Question inserted in db");
-                //    return response;
-                //}
-                //else
-                //{
-                //    response.Data = null;
-                //    response.Status = "failed";
-                //    response.Err = null;
-                //    logger.Log("Invalid Credentials");
-                //    return response;
-
-               // }
             }
 
 
@@ -188,6 +184,73 @@ namespace FinalProject.Controllers
                 return response;
             }
         }
+
+
+
+
+        //// POST: api/Question 
+        //public Response Post([FromBody] List<UserAns> que)
+        //{
+
+        //    try
+        //    {
+        //        int marks = 0;
+
+        //        List<T_Question> questions = dalobj.T_Question.ToList();
+
+        //        foreach (var q in que)
+        //        {
+        //            foreach (var aq in questions)
+        //            {
+        //                if (q.QueId == aq.QueId)
+        //                {
+        //                    if (q.value == aq.CorrectAns)
+        //                    {
+        //                        marks++;
+        //                    }
+        //                }
+
+        //            }
+        //        }
+
+        //        response.Data = marks;
+        //        response.Status = "success";
+        //        response.Err = null;
+        //        logger.Log("marks displayed");
+        //        return response;
+
+        //        //if (marks != null)
+        //        //{
+        //        //    dalobj.T_Question.Add(que);
+        //        //    dalobj.SaveChanges();
+
+        //        //    response.Data = null;
+        //        //    response.Status = "success";
+        //        //    response.Err = null;
+        //        //    logger.Log("Question inserted in db");
+        //        //    return response;
+        //        //}
+        //        //else
+        //        //{
+        //        //    response.Data = null;
+        //        //    response.Status = "failed";
+        //        //    response.Err = null;
+        //        //    logger.Log("Invalid Credentials");
+        //        //    return response;
+
+        //        //}
+        //    }
+
+
+        //    catch (Exception cause)
+        //    {
+        //        response.Data = cause.Message;
+        //        response.Status = "Failed";
+        //        response.Err = cause;
+        //        logger.Log("Exception occured returned Error msg");
+        //        return response;
+        //    }
+        //}
 
 
 
