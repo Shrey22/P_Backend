@@ -19,27 +19,41 @@ namespace FinalProject.Controllers
             dalobj.Configuration.ProxyCreationEnabled = false;
         }
 
-        //// GET: api/Result
-        //public Response Get()
-        //{
-        //    try
-        //    {
-        //        List<T_Result> list = dalobj.T_Result.ToList();
-        //        response.Data = list;
-        //        response.Status = "success";
-        //        response.Err = null;
-        //        logger.Log("Result list displayed");
-        //        return response;
-        //    }
-        //    catch (Exception cause)
-        //    {
-        //        response.Data = cause.Message;
-        //        response.Status = "Failed";
-        //        response.Err = cause;
-        //        logger.Log("Exception occured returned Error msg");
-        //        return response;
-        //    }
-        //}
+        // GET: api/Results
+        public Response Get()
+        {
+            try
+            {
+                List<T_Result> resList = dalobj.T_Result.ToList();
+                List<T_Subject> subList = dalobj.T_Subject.ToList();
+                List<T_Users> uList = dalobj.T_Users.ToList();
+                var list = (from res in resList
+                            join u in uList on res.UserId equals u.UserId
+                            join sub in subList on res.SubId equals sub.SubId
+                            select new
+                            {
+                                u.Name,
+                                u.EmailId,
+                                sub.SubName,
+                                u.IsLocked,
+                                res.CntCorrectAns
+                            }).ToList();
+
+                response.Data = list;
+                response.Status = "success";
+                response.Err = null;
+                logger.Log("Result list displayed");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Err = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
+        }
 
 
         // GET: api/Result/5
@@ -127,13 +141,23 @@ namespace FinalProject.Controllers
 
 
         // POST: api/Result
-        public Response Post([FromBody]T_Result result)
+        public Response Post([FromBody] UserScore tally)
         {
             try
             {
-                if (result != null)                    // afterwards check valid subject or not so if/else loop ...
+
+                if (tally != null)                    // afterwards check valid subject or not so if/else loop ...
                 {
-                    dalobj.T_Result.Add(result);
+
+                    T_Result list = new T_Result();
+
+
+
+                    list.UserId = tally.UserId;
+                    list.SubId = tally.SubId;
+                    list.CntCorrectAns = tally.CntCorrectAns;
+
+                    dalobj.T_Result.Add(list);
                     dalobj.SaveChanges();
                     response.Data = null;
                     response.Status = "success";
@@ -160,6 +184,43 @@ namespace FinalProject.Controllers
                 return response;
             }
         }
+
+
+
+        //// POST: api/Result
+        //public Response Post([FromBody]T_Result result)
+        //{
+        //    try
+        //    {
+        //        if (result != null)                    // afterwards check valid subject or not so if/else loop ...
+        //        {
+        //            dalobj.T_Result.Add(result);
+        //            dalobj.SaveChanges();
+        //            response.Data = null;
+        //            response.Status = "success";
+        //            response.Err = null;
+        //            logger.Log("Result added in db");
+        //            return response;
+        //        }
+        //        else
+        //        {
+        //            response.Data = null;
+        //            response.Status = "Failed";
+        //            response.Err = null;
+        //            logger.Log("Result insertion failed");
+        //            return response;
+        //        }
+        //    }
+
+        //    catch (Exception cause)
+        //    {
+        //        response.Data = cause.Message;
+        //        response.Status = "Failed";
+        //        response.Err = cause;
+        //        logger.Log("Exception occured returned Error msg");
+        //        return response;
+        //    }
+        //}
 
         // PUT: api/Result/5
         public Response Put(int id, [FromBody]T_Result result)

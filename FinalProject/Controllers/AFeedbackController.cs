@@ -30,12 +30,16 @@ namespace FinalProject.Controllers
                 List<T_Feedback> feedbacks = dalobj.T_Feedback.ToList();
                 List<T_Users> users = dalobj.T_Users.ToList();
 
-                var output = (from fd in feedbacks
-                              join u in users on fd.UserId_ equals u.UserId
-                              select new { fd, u.Name });
+                //var output = (from fd in feedbacks
+                //              join u in users on fd.UserId_ equals u.UserId
+                //              select new { fd, u.Name });
+
+                var list = (from u in users
+                            join fdbk in feedbacks on u.UserId equals fdbk.UserId_
+                            select fdbk).ToList();
 
 
-                response.Data = output;
+                response.Data = list;
                 response.Status = "success";
                 response.Err = null;
                 logger.Log("Feedback list displayed");

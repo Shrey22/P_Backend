@@ -89,6 +89,53 @@ namespace FinalProject.Controllers
         //}
 
 
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("api/Questions/List/{id}")]
+        public Response GetQuestionBySubjects(int id)
+        {
+            try
+            {
+                List<T_Question> quesList = dalobj.T_Question.ToList();
+                List<T_Subject> subList = dalobj.T_Subject.ToList();
+
+                var list = (from ques in quesList
+                            where ques.SubId == id
+                            select new
+                            {
+                                ques.Question,
+                                ques.Opt1,
+                                ques.Opt2,
+                                ques.Opt3,
+                                ques.Opt4,
+                                ques.CorrectAns
+                            }).ToList();
+                if (list != null)
+                {
+                    response.Data = list;
+                    response.Status = "success";
+                    response.Err = null;
+                    logger.Log("List of Questions displayed");
+                    return response;
+                }
+                else
+                {
+                    response.Data = null;
+                    response.Status = "failed";
+                    response.Err = null;
+                    logger.Log("List of Questions is Empty");
+                    return response;
+                }
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Err = cause;
+                logger.Log("Exception occured returned Erroror msg");
+                return response;
+            }
+        }
+
         //// GET: api/Question/5
         //[System.Web.Http.HttpGet]
         //[System.Web.Http.Route("api/Question/Subject/")]
@@ -138,16 +185,14 @@ namespace FinalProject.Controllers
             }
         }
 
+
         // POST: api/Question 
-        [HttpPut]
-        [System.Web.Http.Route("api/Question/Subid/{id}")]
-        public Response put(int subid,[FromBody] List<UserAns> que,int id)
+        public Response Post([FromBody] List<UserAns> que)
         {
 
             try
             {
                 int marks = 0;
-
 
                 List<T_Question> questions = dalobj.T_Question.ToList();
 
@@ -172,6 +217,7 @@ namespace FinalProject.Controllers
                 logger.Log("marks displayed");
                 return response;
 
+                
             }
 
 
@@ -187,108 +233,43 @@ namespace FinalProject.Controllers
 
 
 
+        // POST: api/Question
+        [HttpPost]
+        [System.Web.Http.Route("api/Question/AddQuestion")]
+        public Response Post([FromBody]T_Question que)
+        {
+            try
+            {
+                if (que != null)
+                {
+                    dalobj.T_Question.Add(que);
+                    dalobj.SaveChanges();
 
-        //// POST: api/Question 
-        //public Response Post([FromBody] List<UserAns> que)
-        //{
+                    response.Data = null;
+                    response.Status = "success";
+                    response.Err = null;
+                    logger.Log("Question inserted in db");
+                    return response;
+                }
+                else
+                {
+                    response.Data = null;
+                    response.Status = "failed";
+                    response.Err = null;
+                    logger.Log("Invalid Credentials");
+                    return response;
 
-        //    try
-        //    {
-        //        int marks = 0;
-
-        //        List<T_Question> questions = dalobj.T_Question.ToList();
-
-        //        foreach (var q in que)
-        //        {
-        //            foreach (var aq in questions)
-        //            {
-        //                if (q.QueId == aq.QueId)
-        //                {
-        //                    if (q.value == aq.CorrectAns)
-        //                    {
-        //                        marks++;
-        //                    }
-        //                }
-
-        //            }
-        //        }
-
-        //        response.Data = marks;
-        //        response.Status = "success";
-        //        response.Err = null;
-        //        logger.Log("marks displayed");
-        //        return response;
-
-        //        //if (marks != null)
-        //        //{
-        //        //    dalobj.T_Question.Add(que);
-        //        //    dalobj.SaveChanges();
-
-        //        //    response.Data = null;
-        //        //    response.Status = "success";
-        //        //    response.Err = null;
-        //        //    logger.Log("Question inserted in db");
-        //        //    return response;
-        //        //}
-        //        //else
-        //        //{
-        //        //    response.Data = null;
-        //        //    response.Status = "failed";
-        //        //    response.Err = null;
-        //        //    logger.Log("Invalid Credentials");
-        //        //    return response;
-
-        //        //}
-        //    }
-
-
-        //    catch (Exception cause)
-        //    {
-        //        response.Data = cause.Message;
-        //        response.Status = "Failed";
-        //        response.Err = cause;
-        //        logger.Log("Exception occured returned Error msg");
-        //        return response;
-        //    }
-        //}
-
-
-
-        //// POST: api/Question
-        //public Response Post([FromBody]T_Question que)
-        //{
-        //    try
-        //    {
-        //        if (que != null)
-        //        {
-        //            dalobj.T_Question.Add(que);
-        //            dalobj.SaveChanges();
-
-        //            response.Data = null;
-        //            response.Status = "success";
-        //            response.Err = null;
-        //            logger.Log("Question inserted in db");
-        //            return response;
-        //        }
-        //        else
-        //        {
-        //            response.Data = null;
-        //            response.Status = "failed";
-        //            response.Err = null;
-        //            logger.Log("Invalid Credentials");
-        //            return response;
-
-        //        }
-        //    }
-        //    catch (Exception cause)
-        //    {
-        //        response.Data = cause.Message;
-        //        response.Status = "Failed";
-        //        response.Err = cause;
-        //        logger.Log("Exception occured returned Error msg");
-        //        return response;
-        //    }
-        //}
+                }
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Err = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
+        }
 
         // PUT: api/Question/5
         public Response Put(int id, [FromBody]T_Question que)
