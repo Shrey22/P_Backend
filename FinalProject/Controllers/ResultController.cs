@@ -64,6 +64,7 @@ namespace FinalProject.Controllers
             try
             {
 
+
                 //T_Result resultToBeFind = dalobj.T_Result.Find(id);
 
                 List<T_Result> list = dalobj.T_Result.ToList();

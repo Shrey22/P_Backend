@@ -82,9 +82,15 @@ namespace FinalProject.Controllers
                 if (user.MobileNo != null)
                     userToBeUpdated.MobileNo = user.MobileNo;
                 //userToBeUpdated.RoleId = user.RoleId;
+                if (user.IsLocked == true)
+                {
+                    userToBeUpdated.IsLocked = user.IsLocked;
+                }
+                else { userToBeUpdated.IsLocked = user.IsLocked; }
+                dalobj.SaveChanges();
 
                 response.Status = "success";
-                dalobj.SaveChanges();
+                response.Err = null;
                 logger.Log("User updated.");
 
                 return response;
